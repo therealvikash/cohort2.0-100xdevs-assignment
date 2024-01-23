@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 2em;
+      }
+    </style>
+    <title>Simple Clock</title>
+  </head>
+  <body>
+    <div id="clock"></div>
+
+    <script>
+      function updateClock() {
+        const clockElement = document.getElementById("clock");
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const ampm = hours >= 12 ? "PM" : "AM";
+
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Convert 0 to 12
+
+        const timeString = `${formatTimeComponent(hours)}:${formatTimeComponent(
+          minutes
+        )}:${formatTimeComponent(seconds)} ${ampm}`;
+        clockElement.textContent = timeString;
+      }
+
+      function formatTimeComponent(component) {
+        return component < 10 ? "0" + component : component;
+      }
+
+      // Update the clock every second
+      setInterval(updateClock, 1000);
+
+      // Initial update
+      updateClock();
+    </script>
+  </body>
+</html>

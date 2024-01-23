@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Counter</title>
+    <style>
+      body {
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Counter: </h1>
+    <p id="counter">0</p>
+    <script>
+      let counterValue = 0;
+
+      function updateCounter() {
+        counterValue++;
+        document.getElementById("counter").textContent = counterValue;
+      }
+      setInterval(updateCounter, 1000);
+      
+    </script>
+  </body>
+</html>
